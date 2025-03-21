@@ -11,7 +11,7 @@ public class EjemploOracleJDBC {
 	public static void main(String[] args) {
 		// Intentar conectar y ejecutar consulta
 		try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
-			System.out.println("✅ Conexión exitosa a Oracle!");
+			System.out.println("✅ onexión exitosa a Oracle!");
 
 			// Query de ejemplo
 			String sql = "SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME FROM EMPLOYEES WHERE ROWNUM <= 100 ORDER BY EMPLOYEE_ID ASC";
