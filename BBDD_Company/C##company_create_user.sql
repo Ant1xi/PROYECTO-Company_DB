@@ -1,0 +1,3 @@
+CREATE USER company IDENTIFIED BY company;
+
+GRANT CONNECT, RESOURCE, DBA TO company;
