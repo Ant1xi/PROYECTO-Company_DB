@@ -1,5 +1,6 @@
 package Exceptions;
 
+@SuppressWarnings("serial")
 public class EmployeeDataException extends CompanyException{
 	public EmployeeDataException() {
     }

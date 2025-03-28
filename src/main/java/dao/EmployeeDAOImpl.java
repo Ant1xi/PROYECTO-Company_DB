@@ -5,12 +5,13 @@ import java.util.*;
 import java.util.Date;
 
 import Exceptions.EmployeeDataException;
+import Exceptions.IncorrectDataException;
 import tablas.Employee;
 
 public class EmployeeDAOImpl implements DAO<Employee>{
 
 	@Override
-	public List<Employee> getAll(Connection conn) throws EmployeeDataException {
+	public List<Employee> getAll(Connection conn) throws EmployeeDataException, IncorrectDataException {
 		String sqlQuery = "SELECT * FROM employees";
 		
 		List<Employee> employeesList = new ArrayList<>();

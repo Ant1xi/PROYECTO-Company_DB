@@ -1,12 +1,13 @@
 package dao;
 
 import java.sql.*;
+
 import java.util.*;
 
-import Exceptions.EmployeeDataException;
+import Exceptions.CompanyException;
 
 public interface DAO<T> {
-	public List<T> getAll(Connection conn) throws EmployeeDataException;
+	public List<T> getAll(Connection conn) throws CompanyException;
 	
 	public T get(Connection conn, int id);
 	
