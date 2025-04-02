@@ -18,18 +18,48 @@ public class Employee {
 	public Employee(Integer employeeId, String firstName, String lastName, String email, String phone, Date hireDate,
 			Integer managerId, String jobTitle) throws IncorrectDataException {
 
-		// Validaciones para evitar valores nulos en campos obligatorios
-		if (firstName == null || lastName == null || email == null || phone == null || hireDate == null
-				|| jobTitle == null) {
+// Validaciones para evitar valores nulos en campos "obligatorios"
+		if (firstName == null || lastName == null || email == null || phone == null || jobTitle == null) {
 			throw new IncorrectDataException("Ninguno de los campos obligatorios puede ser nulo.");
 		}
-		
+
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		this.hireDate = hireDate;
+
+// Asigna hireDate con validación
+		if (hireDate != null) {
+			this.hireDate = hireDate;
+		} else {
+			this.hireDate = new Date(); // Si es null, usa la fecha actual
+		}
+
+		this.managerId = managerId;
+		this.jobTitle = jobTitle;
+	}
+	
+	public Employee(String firstName, String lastName, String email, String phone, Date hireDate,
+			Integer managerId, String jobTitle) throws IncorrectDataException {
+
+// Validaciones para evitar valores nulos en campos "obligatorios"
+		if (firstName == null || lastName == null || email == null || phone == null || jobTitle == null) {
+			throw new IncorrectDataException("Ninguno de los campos obligatorios puede ser nulo.");
+		}
+
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phone = phone;
+
+// Asigna hireDate con validación
+		if (hireDate != null) {
+			this.hireDate = hireDate;
+		} else {
+			this.hireDate = new Date(); // Si es null, usa la fecha actual
+		}
+
 		this.managerId = managerId;
 		this.jobTitle = jobTitle;
 	}
