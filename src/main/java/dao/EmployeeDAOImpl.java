@@ -59,7 +59,7 @@ public class EmployeeDAOImpl implements DAO<Employee> {
 			pstmt.setObject(6, employee.getManagerId(), Types.INTEGER); // Puede ser nulo
 			pstmt.setString(7, employee.getJobTitle());
 
-			pstmt.executeUpdate(); // Ejecutamos la consulta de inserción
+			pstmt.executeUpdate(); // Ejecutamos la consulta para insertar nuestro nuevo empleado
 
 		} catch (SQLException e) {
 			e.printStackTrace();

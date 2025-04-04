@@ -20,7 +20,7 @@ public class AltaEmpleadoVista extends JFrame {
 		setLocationRelativeTo(null); // Centrar la ventana en la pantalla
 		setLayout(new GridLayout(7, 2)); // 7 Filas para los campos y el botón
 
-		// Creear los componentes
+		// Creear los componentes para que el usuario escriba
 		txtFirstName = new JTextField();
 		txtLastName = new JTextField();
 		txtEmail = new JTextField();

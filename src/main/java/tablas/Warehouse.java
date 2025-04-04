@@ -12,6 +12,12 @@ public class Warehouse {
 		this.locationId = locationId;
 	}
 
+	public Warehouse(String warehouseName, Integer locationId) {
+		super();
+		this.warehouseName = warehouseName;
+		this.locationId = locationId;
+	}
+
 	public Integer getWarehouseId() {
 		return warehouseId;
 	}
@@ -41,6 +47,5 @@ public class Warehouse {
 		return "Warehouse [warehouseId=" + warehouseId + ", warehouseName=" + warehouseName + ", locationId="
 				+ locationId + "]";
 	}
-	
-	
+
 }
