@@ -9,7 +9,7 @@ import Exceptions.CompanyException;
 import Exceptions.WarehouseDataException;
 import tablas.Warehouse;
 
-public class WharehouseDAOImpl implements DAO<Warehouse>{
+public class WarehouseDAOImpl implements DAO<Warehouse>{
 
 	@Override
 	public List<Warehouse> getAll(Connection conn) throws CompanyException {

@@ -40,6 +40,36 @@ public class EmployeeDAOImpl implements DAO<Employee> {
 
 	}
 
+	public List<Employee> getManagers(Connection conn) throws EmployeeDataException, IncorrectDataException {
+		String sqlQuery = "SELECT * FROM employees WHERE employee_id IN (SELECT DISTINCT manager_id FROM employees WHERE manager_id IS NOT NULL)";
+
+		List<Employee> managersList = new ArrayList<>();
+
+		try (PreparedStatement pstmt = conn.prepareStatement(sqlQuery); ResultSet rs = pstmt.executeQuery()) {
+
+			while (rs.next()) {
+				Integer employeeId = rs.getInt("employee_id");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				String email = rs.getString("email");
+				String phone = rs.getString("phone");
+				Date hireDate = rs.getDate("hire_date");
+				Integer managerId = rs.getInt("manager_id");
+				String jobTitle = rs.getString("job_title");
+
+				Employee manager = new Employee(employeeId, firstName, lastName, email, phone, hireDate, managerId,
+						jobTitle);
+				managersList.add(manager);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new EmployeeDataException();
+		}
+
+		return managersList;
+	}
+
 	@Override
 	public Employee get(Connection conn, int id) {
 		// TODO Auto-generated method stub
