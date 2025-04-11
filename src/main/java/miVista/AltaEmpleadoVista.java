@@ -22,6 +22,7 @@ import dto.OpcionComboDTO;
 import oracle.sql.OpaqueDescriptor;
 import tablas.Employee;
 
+@SuppressWarnings("serial")
 public class AltaEmpleadoVista extends JFrame {
 
 	// Campos de entrada de texto
@@ -144,13 +145,11 @@ public class AltaEmpleadoVista extends JFrame {
 			managerId = opcionElegida.getId();
 		}
 
-		// Una vez validado todo y obtenido la id, ya se puede crear al nuevo empleado
-		Employee nuevoEmpleado = new Employee(firstName, lastName, email, phone, null, managerId, jobTitle);
-
+		
 		// Tenemos que guardar llamando al controlador y no al DAO
 		try {
 			EmployeeControllerEjercicio1 controller = new EmployeeControllerEjercicio1();
-			controller.guardarEmpleado(nuevoEmpleado); // El controlador se encarga de validación y DAO
+			controller.guardarEmpleado(firstName, lastName, email, phone, null, managerId, jobTitle); // El controlador se encarga de validación y DAO
 			JOptionPane.showMessageDialog(this, "Empleado guardado correctamente.", "Éxito",
 					JOptionPane.INFORMATION_MESSAGE);
 			limpiarCampos();
