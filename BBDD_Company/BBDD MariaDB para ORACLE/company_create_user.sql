@@ -1,0 +1,12 @@
+
+-- Desde root
+
+CREATE USER C##COMPANY2 IDENTIFIED BY company2;
+
+GRANT CONNECT, RESOURCE TO C##COMPANY2;
+
+ALTER USER C##COMPANY2 DEFAULT TABLESPACE USERS;
+
+ALTER USER C##COMPANY2 QUOTA UNLIMITED ON USERS;
+
+-- Ahora creamos una nueva sesi�n asociada al usuario y la abrimos

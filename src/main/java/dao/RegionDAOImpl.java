@@ -34,25 +34,6 @@ public class RegionDAOImpl implements DAO<Region> {
 
 	}
 
-	// Este método es necesario para llenar el JComboBox de Regiones
-	public List<OpcionComboDTO> getRegionesCombo(Connection conn) throws CompanyException {
-		String sqlQuery = "SELECT region_id, region_name FROM regions";
-		List<OpcionComboDTO> cmbListaRegiones = new ArrayList<>();
-
-		try (PreparedStatement pstmt = conn.prepareStatement(sqlQuery); ResultSet rs = pstmt.executeQuery();) {
-
-			while (rs.next()) {
-				int id = rs.getInt("region_id");
-				String nombre = rs.getString("region_name");
-
-				cmbListaRegiones.add(new OpcionComboDTO(id, nombre));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new CompanyException();
-		}
-		return cmbListaRegiones;
-	}
 
 	@Override
 	public Region get(Connection conn, int id) {

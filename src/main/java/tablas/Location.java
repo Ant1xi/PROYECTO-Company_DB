@@ -1,16 +1,22 @@
 package tablas;
 
+import Exceptions.LocationDataException;
+
 public class Location {
-	private Integer locationId;
-	private String address;
+	private Integer locationId; //Clave primaria
+	private String address; //No puede ser nulo
 	private String postalCode;
 	private String city;
 	private String state;
-	private String countryId;
+	private String countryId; //Clave foranea de Pais
 
 	public Location(Integer locationId, String address, String postalCode, String city, String state,
-			String countryId) {
-		super();
+			String countryId) throws LocationDataException {
+
+		if (address == null || countryId == null) {
+			throw new LocationDataException("'address' y 'countryId' no pueden ser nulos.");
+		}
+
 		this.locationId = locationId;
 		this.address = address;
 		this.postalCode = postalCode;

@@ -1,22 +1,29 @@
 package tablas;
 
+
 import java.util.Date;
+
+import Exceptions.OrderDataException;
 
 public class Order {
 	private Integer orderId; // Clave primaria
-	private Integer customerId; // No puede ser nulo
+	private Integer customerId; // No puede ser nulo y clave foranea
 	private String status; // No puede ser nulo
-	private Integer salesmanId;
+	private Integer salesmanId; // Clave foranea
 	private Date orderDate; // No puede ser nulo
 
-	public Order(Integer orderId, Integer customerId, String status, Integer salesmanId, Date orderDate) {
-		super();
+	public Order(Integer orderId, Integer customerId, String status, Integer salesmanId, Date orderDate) throws OrderDataException {
+		if (customerId == null || status == null || orderDate == null) {
+			throw new OrderDataException("Ninguno de los campos obligatorios puede ser nulo.");
+		}
+
 		this.orderId = orderId;
 		this.customerId = customerId;
 		this.status = status;
 		this.salesmanId = salesmanId;
 		this.orderDate = orderDate;
 	}
+
 
 	public Integer getOrderId() {
 		return orderId;

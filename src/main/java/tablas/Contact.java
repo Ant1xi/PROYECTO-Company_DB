@@ -1,16 +1,22 @@
 package tablas;
 
+import Exceptions.ContactDataException;
+
 public class Contact {
 	private Integer contactId; // Clave primaria
 	private String firstName; // No puede ser nulo
 	private String lastName; // No pude ser nulo
 	private String email; // No puede ser nulo
 	private String phone;
-	private Integer customerId;
+	private Integer customerId; //Clave foranea
 
 	public Contact(Integer contactId, String firstName, String lastName, String email, String phone,
-			Integer customerId) {
-		super();
+			Integer customerId) throws ContactDataException {
+		
+		if (contactId == null || firstName == null || lastName == null || email == null || customerId == null) {
+			throw new ContactDataException("Ninguno de los campos obligatorios puede ser nulo.");
+		}
+		
 		this.contactId = contactId;
 		this.firstName = firstName;
 		this.lastName = lastName;

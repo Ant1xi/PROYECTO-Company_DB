@@ -1,11 +1,16 @@
 package tablas;
 
-public class ProductCategory {
-	private Integer categoryId;
-	private String categoryName;
+import Exceptions.ProductCategoryDataException;
 
-	public ProductCategory(Integer categoryId, String categoryName) {
-		super();
+public class ProductCategory {
+	private Integer categoryId; // Clave primaria
+	private String categoryName; // No puede ser nulo
+
+	public ProductCategory(Integer categoryId, String categoryName) throws ProductCategoryDataException{
+		if (categoryName == null) {
+			throw new ProductCategoryDataException("El campo 'categoryName' no puede ser nulo.");
+		}
+
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 	}
@@ -30,6 +35,5 @@ public class ProductCategory {
 	public String toString() {
 		return "ProductCategory [categoryId=" + categoryId + ", categoryName=" + categoryName + "]";
 	}
-	
-	
+
 }

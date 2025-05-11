@@ -1,12 +1,17 @@
 package tablas;
 
-public class Inventory {
-	private Integer productId;
-	private Integer warehouseId;
-	private Integer quantity;
+import Exceptions.InventoryDataException;
 
-	public Inventory(Integer productId, Integer warehouseId, Integer quantity) {
-		super();
+public class Inventory {
+	private Integer productId; //Clave foranea
+	private Integer warehouseId; //Clave forenea
+	private Integer quantity; //No puede ser nulo
+
+	public Inventory(Integer productId, Integer warehouseId, Integer quantity) throws InventoryDataException{
+		
+		if (productId == null || warehouseId == null || quantity == null) {
+			throw new InventoryDataException("Ninguno de los campos obligatorios puede ser nulo.");
+		}
 		this.productId = productId;
 		this.warehouseId = warehouseId;
 		this.quantity = quantity;

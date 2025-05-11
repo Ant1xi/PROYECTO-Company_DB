@@ -1,19 +1,27 @@
 package tablas;
 
+import Exceptions.WarehouseDataException;
+
 public class Warehouse {
 	private Integer warehouseId;
 	private String warehouseName;
 	private Integer locationId;
 
-	public Warehouse(Integer warehouseId, String warehouseName, Integer locationId) {
-		super();
+	public Warehouse(Integer warehouseId, String warehouseName, Integer locationId) throws WarehouseDataException {
+		if (warehouseId == null || warehouseName == null || locationId == null) {
+			throw new WarehouseDataException("Ninguno de los campos puede ser nulo.");
+		}
+
 		this.warehouseId = warehouseId;
 		this.warehouseName = warehouseName;
 		this.locationId = locationId;
 	}
 
-	public Warehouse(String warehouseName, Integer locationId) {
-		super();
+	public Warehouse(String warehouseName, Integer locationId) throws WarehouseDataException {
+		if (warehouseName == null || locationId == null) {
+			throw new WarehouseDataException("warehouseName y locationId no pueden ser nulos.");
+		}
+
 		this.warehouseName = warehouseName;
 		this.locationId = locationId;
 	}

@@ -1,5 +1,7 @@
 package tablas;
 
+import Exceptions.ProductDataException;
+
 public class Product {
 	private Integer productId;
 	private String productName; //No puede ser nulo
@@ -9,8 +11,12 @@ public class Product {
 	private Integer categoryId; //No puede ser nulo
 	
 	public Product(Integer productId, String productName, String description, Double standarCost, Double listPrice,
-			Integer categoryId) {
-		super();
+			Integer categoryId) throws ProductDataException {
+
+		if (productName == null || categoryId == null) {
+			throw new ProductDataException("Los campos 'productName' y 'categoryId' no pueden ser nulos.");
+		}
+
 		this.productId = productId;
 		this.productName = productName;
 		this.description = description;
@@ -18,6 +24,7 @@ public class Product {
 		this.listPrice = listPrice;
 		this.categoryId = categoryId;
 	}
+
 
 	public Integer getProductId() {
 		return productId;

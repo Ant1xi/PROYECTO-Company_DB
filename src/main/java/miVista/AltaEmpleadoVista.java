@@ -145,11 +145,13 @@ public class AltaEmpleadoVista extends JFrame {
 			managerId = opcionElegida.getId();
 		}
 
-		
 		// Tenemos que guardar llamando al controlador y no al DAO
 		try {
 			EmployeeControllerEjercicio1 controller = new EmployeeControllerEjercicio1();
-			controller.guardarEmpleado(firstName, lastName, email, phone, null, managerId, jobTitle); // El controlador se encarga de validación y DAO
+			controller.guardarEmpleado(firstName, lastName, email, phone, null, managerId, jobTitle); // El controlador
+																										// se encarga de
+																										// validación y
+																										// DAO
 			JOptionPane.showMessageDialog(this, "Empleado guardado correctamente.", "Éxito",
 					JOptionPane.INFORMATION_MESSAGE);
 			limpiarCampos();

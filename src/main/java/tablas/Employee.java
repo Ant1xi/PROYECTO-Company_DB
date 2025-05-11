@@ -2,7 +2,8 @@ package tablas;
 
 import java.util.Date;
 
-import Exceptions.IncorrectDataException;
+import Exceptions.EmployeeDataException;
+
 
 public class Employee {
 	// Wrapper para poder almacenar nulos
@@ -16,11 +17,11 @@ public class Employee {
 	private String jobTitle; // No puede ser nulo
 
 	public Employee(Integer employeeId, String firstName, String lastName, String email, String phone, Date hireDate,
-			Integer managerId, String jobTitle) throws IncorrectDataException {
+			Integer managerId, String jobTitle) throws EmployeeDataException{
 
 // Validaciones para evitar valores nulos en campos "obligatorios"
 		if (firstName == null || lastName == null || email == null || phone == null || jobTitle == null) {
-			throw new IncorrectDataException("Ninguno de los campos obligatorios puede ser nulo.");
+			throw new EmployeeDataException("Ninguno de los campos obligatorios puede ser nulo.");
 		}
 
 		this.employeeId = employeeId;
@@ -41,11 +42,11 @@ public class Employee {
 	}
 	
 	public Employee(String firstName, String lastName, String email, String phone, Date hireDate,
-			Integer managerId, String jobTitle) throws IncorrectDataException {
+			Integer managerId, String jobTitle) throws EmployeeDataException {
 
 // Validaciones para evitar valores nulos en campos "obligatorios"
 		if (firstName == null || lastName == null || email == null || phone == null || jobTitle == null) {
-			throw new IncorrectDataException("Ninguno de los campos obligatorios puede ser nulo.");
+			throw new EmployeeDataException("Ninguno de los campos obligatorios puede ser nulo.");
 		}
 
 		this.firstName = firstName;

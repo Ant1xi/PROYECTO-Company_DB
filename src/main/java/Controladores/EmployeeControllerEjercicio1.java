@@ -28,8 +28,6 @@ public class EmployeeControllerEjercicio1 {
 			employeeDAO.create(conn, e1); // Insertar en la BD
 			System.out.println("Empleado insertado correctamente.");
 
-		} catch (IncorrectDataException e) {
-			e.printStackTrace();
 		} catch (EmployeeDataException e) {
 			e.printStackTrace();
 		}
@@ -55,9 +53,10 @@ public class EmployeeControllerEjercicio1 {
 		AltaEmpleadoVista aev = new AltaEmpleadoVista(listaManagers);
 	}
 
-	public void guardarEmpleado(String firstName, String lastName, String email, String phone, Date fecha, Integer managerId, String jobTitle) throws IncorrectDataException, EmployeeDataException {
+	public void guardarEmpleado(String firstName, String lastName, String email, String phone, Date fecha,
+			Integer managerId, String jobTitle) throws IncorrectDataException, EmployeeDataException {
 		// Una vez validado todo y obtenido la id, ya se puede crear al nuevo empleado
-	    Employee empleado = new Employee(firstName, lastName, email, phone, null, managerId, jobTitle);
+		Employee empleado = new Employee(firstName, lastName, email, phone, null, managerId, jobTitle);
 
 		try (Connection conn = DataBaseConector.getConnection();) {
 			EmployeeDAOImpl EmployeeDAO = new EmployeeDAOImpl();

@@ -1,14 +1,20 @@
 package tablas;
 
+import Exceptions.IncorrectDataException;
+
 public class Customer {
 	private Integer customerId; // Clave primaria
-	private String name; // No puede ser nulo
+	private String name; //No puede ser nulo
 	private String addres;
 	private String website;
 	private Double creditLimit;
 
-	public Customer(Integer customerId, String name, String addres, String website, Double creditLimit) {
-		super();
+	public Customer(Integer customerId, String name, String addres, String website, Double creditLimit) throws IncorrectDataException {
+		
+		if (name == null) {
+			throw new IncorrectDataException("'name' no puede ser nulo.");
+		}
+		
 		this.customerId = customerId;
 		this.name = name;
 		this.addres = addres;

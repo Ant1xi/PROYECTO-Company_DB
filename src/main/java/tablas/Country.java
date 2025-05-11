@@ -1,12 +1,16 @@
 package tablas;
 
+import Exceptions.CountryDataException;
+
 public class Country {
-	private String countryId;
-	private String countryName;
-	private Integer regionId;
+	private String countryId; //Clave primaria
+	private String countryName; //No puede ser nulo
+	private Integer regionId; //Clave foranea de Region
 	
-	public Country(String countryId, String countryName, Integer regionId) {
-		super();
+	public Country(String countryId, String countryName, Integer regionId) throws CountryDataException{
+		if (countryId == null || countryName == null || regionId == null) {
+			throw new CountryDataException("Ninguno de los campos obligatorios puede ser nulo.");
+		}
 		this.countryId = countryId;
 		this.countryName = countryName;
 		this.regionId = regionId;

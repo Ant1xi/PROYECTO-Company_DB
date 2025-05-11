@@ -1,5 +1,7 @@
 package tablas;
 
+import Exceptions.OrderItemDataException;
+
 public class OrderItem {
 	private Integer orderId;
 	private Integer itemId;
@@ -7,8 +9,11 @@ public class OrderItem {
 	private Double quantity; // No puede ser nulo
 	private Double unitPrice; // No puede ser nulo
 
-	public OrderItem(Integer orderId, Integer itemId, Integer productId, Double quantity, Double unitPrice) {
-		super();
+	public OrderItem(Integer orderId, Integer itemId, Integer productId, Double quantity, Double unitPrice) throws OrderItemDataException {
+		if (orderId == null || itemId == null || productId == null || quantity == null || unitPrice == null) {
+			throw new OrderItemDataException("Ninguno de los campos puede ser nulo.");
+		}
+
 		this.orderId = orderId;
 		this.itemId = itemId;
 		this.productId = productId;
