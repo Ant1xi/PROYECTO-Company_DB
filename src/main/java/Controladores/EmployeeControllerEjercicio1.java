@@ -18,21 +18,6 @@ import tablas.Employee;
 
 public class EmployeeControllerEjercicio1 {
 
-	public void createNewEmployee(String firstName, String lastName, String email, String phone, Date hireDate,
-			Integer managerId, String jobTitle) throws SQLException {
-
-		try (Connection conn = DataBaseConector.getConnection();) {
-			Employee e1 = new Employee(firstName, lastName, email, phone, hireDate, managerId, jobTitle);
-			EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-
-			employeeDAO.create(conn, e1); // Insertar en la BD
-			System.out.println("Empleado insertado correctamente.");
-
-		} catch (EmployeeDataException e) {
-			e.printStackTrace();
-		}
-	}
-
 	public void cargaVistaAltaEmpleado() throws SQLException, CompanyException {
 		List<OpcionComboDTO> listaManagers = new ArrayList<>();
 
@@ -40,7 +25,7 @@ public class EmployeeControllerEjercicio1 {
 
 			EmployeeDAOImpl e1 = new EmployeeDAOImpl();
 			List<Employee> listaEmpleado = e1.getAll(conn);
-			for (var emp : listaEmpleado) {
+			for (Employee emp : listaEmpleado) {
 				listaManagers
 						.add(new OpcionComboDTO(emp.getEmployeeId(), emp.getFirstName() + " " + emp.getLastName()));
 

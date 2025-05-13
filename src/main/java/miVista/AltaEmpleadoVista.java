@@ -44,8 +44,9 @@ public class AltaEmpleadoVista extends JFrame {
 		// Configuración básica de la ventana
 		setTitle("Alta de Nuevo Empleado");
 		setSize(500, 300);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cerrar ventana pero no el programa
+		setLocationRelativeTo(null); // Como es una ventana nueva no le podemos asignar la posicion donde se abre a
+										// un Jtable por ejemplo
 		setLayout(new GridLayout(7, 2)); // 7 filas, 2 columnas
 
 		// Inicializar los campos de texto
@@ -152,6 +153,7 @@ public class AltaEmpleadoVista extends JFrame {
 																										// se encarga de
 																										// validación y
 																										// DAO
+			//Para que se muestre el Joption pane en esta ventana usamos: this
 			JOptionPane.showMessageDialog(this, "Empleado guardado correctamente.", "Éxito",
 					JOptionPane.INFORMATION_MESSAGE);
 			limpiarCampos();

@@ -12,66 +12,34 @@ import Exceptions.CompanyException;
 import tablas.Customer;
 import tablas.Order;
 
-public class OrderDAOImpl implements DAO<Order>{
-
-	@Override
-	public List<Order> getAll(Connection conn) throws CompanyException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Order get(Connection conn, int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+public class OrderDAOImpl {
 
 	public List<Order> getByCustomerId(Connection conn, int customerId) throws CompanyException {
-	    List<Order> orderList = new ArrayList<>();
+		List<Order> orderList = new ArrayList<>();
 
-	    String sqlQuery = "SELECT * FROM orders WHERE customer_id = ?";
+		String sqlQuery = "SELECT * FROM orders WHERE customer_id = ?";
 
-	    try (PreparedStatement pstmt = conn.prepareStatement(sqlQuery)) {
-	        pstmt.setInt(1, customerId); 
+		try (PreparedStatement pstmt = conn.prepareStatement(sqlQuery)) {
+			pstmt.setInt(1, customerId);
 
-	        ResultSet rs = pstmt.executeQuery();
+			ResultSet rs = pstmt.executeQuery();
 
-	        while (rs.next()) {
-	            int orderId = rs.getInt("order_id");
-	            int custId = rs.getInt("customer_id");
-	            String status = rs.getString("status");
-	            int salesmanId = rs.getInt("salesman_id");
-	            java.util.Date orderDate = rs.getDate("order_date");
+			while (rs.next()) {
+				int orderId = rs.getInt("order_id");
+				int custId = rs.getInt("customer_id");
+				String status = rs.getString("status");
+				int salesmanId = rs.getInt("salesman_id");
+				java.util.Date orderDate = rs.getDate("order_date");
 
-	            orderList.add(new Order(orderId, custId, status, salesmanId, orderDate));
-	        }
+				orderList.add(new Order(orderId, custId, status, salesmanId, orderDate));
+			}
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	        throw new CompanyException("Error al obtener pedidos");
-	    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CompanyException("Error al obtener pedidos");
+		}
 
-	    return orderList;
-	}
-
-
-	@Override
-	public void create(Connection conn, Order t) throws CompanyException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Connection conn, Order t, Object[] params) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(Connection conn, Order t) {
-		// TODO Auto-generated method stub
-		
+		return orderList;
 	}
 
 }

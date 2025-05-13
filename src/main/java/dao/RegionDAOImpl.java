@@ -11,9 +11,8 @@ import Exceptions.CompanyException;
 import dto.OpcionComboDTO;
 import tablas.Region;
 
-public class RegionDAOImpl implements DAO<Region> {
+public class RegionDAOImpl {
 
-	@Override
 	public List<Region> getAll(Connection conn) throws CompanyException {
 		String sqlQuery = "SELECT * FROM regions";
 
@@ -31,31 +30,6 @@ public class RegionDAOImpl implements DAO<Region> {
 			e.printStackTrace();
 			throw new CompanyException();
 		}
-
-	}
-
-
-	@Override
-	public Region get(Connection conn, int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void create(Connection conn, Region t) throws CompanyException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void update(Connection conn, Region t, Object[] params) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete(Connection conn, Region t) {
-		// TODO Auto-generated method stub
 
 	}
 

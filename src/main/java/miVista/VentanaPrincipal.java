@@ -45,8 +45,8 @@ public class VentanaPrincipal extends JFrame {
 				AlmacenControllerEjercicio2 ac = new AlmacenControllerEjercicio2();
 				try {
 					ac.cargaVistaAltaAlmacen(); // Método correcto para abrir la vista de alta de almacén
-				} catch (Exception ex) {
-					ex.printStackTrace();
+				} catch (Exception e2) {
+					e2.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Error al cargar alta de almacén", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}

@@ -8,9 +8,8 @@ import Exceptions.EmployeeDataException;
 import Exceptions.IncorrectDataException;
 import tablas.Employee;
 
-public class EmployeeDAOImpl implements DAO<Employee> {
+public class EmployeeDAOImpl {
 
-	@Override
 	public List<Employee> getAll(Connection conn) throws EmployeeDataException, IncorrectDataException {
 		String sqlQuery = "SELECT * FROM employees";
 
@@ -40,13 +39,6 @@ public class EmployeeDAOImpl implements DAO<Employee> {
 
 	}
 
-	@Override
-	public Employee get(Connection conn, int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void create(Connection conn, Employee employee) throws EmployeeDataException {
 		String sqlQuery = "INSERT INTO employees "
 				+ "(first_name, last_name, email, phone, hire_date, manager_id, job_title) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -66,18 +58,6 @@ public class EmployeeDAOImpl implements DAO<Employee> {
 			e.printStackTrace();
 			throw new EmployeeDataException(); // Lanzamos una excepción personalizada si hay error
 		}
-	}
-
-	@Override
-	public void update(Connection conn, Employee t, Object[] params) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete(Connection conn, Employee t) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

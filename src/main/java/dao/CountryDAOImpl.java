@@ -8,16 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Exceptions.CompanyException;
-import dto.OpcionComboDTO;
 import tablas.Country;
 
-public class CountryDAOImpl implements DAO<Country> {
-
-	@Override
-	public List<Country> getAll(Connection conn) throws CompanyException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public class CountryDAOImpl {
 
 	public List<Country> getCountriesByRegion(Connection conn, int regionId) throws CompanyException {
 		String sql = "SELECT country_id, country_name, region_id FROM countries WHERE region_id = ?";
@@ -39,30 +32,6 @@ public class CountryDAOImpl implements DAO<Country> {
 		}
 
 		return lista;
-	}
-
-	@Override
-	public Country get(Connection conn, int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void create(Connection conn, Country t) throws CompanyException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void update(Connection conn, Country t, Object[] params) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete(Connection conn, Country t) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

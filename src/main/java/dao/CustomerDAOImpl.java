@@ -11,9 +11,8 @@ import Exceptions.CompanyException;
 import dto.ClienteModificarDTO;
 import tablas.Customer;
 
-public class CustomerDAOImpl implements DAO<Customer> {
+public class CustomerDAOImpl {
 
-	@Override
 	public List<Customer> getAll(Connection conn) throws CompanyException {
 		List<Customer> customerList = new ArrayList<Customer>();
 
@@ -39,26 +38,17 @@ public class CustomerDAOImpl implements DAO<Customer> {
 
 		return customerList;
 	}
-	
-	
 
-	@Override
-	public Customer get(Connection conn, int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	public List<Customer> getByIdOrNombre(Connection conn, int id, String nombre) throws CompanyException{
+	public List<Customer> getByIdOrNombre(Connection conn, int id, String nombre) throws CompanyException {
 		List<Customer> customerList = new ArrayList<Customer>();
 
 		String sqlQuery = "SELECT * FROM Customers WHERE customer_id = ? OR name = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sqlQuery);
-			
+
 			pstmt.setInt(1, id);
 			pstmt.setString(2, nombre);
-			
+
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -79,36 +69,17 @@ public class CustomerDAOImpl implements DAO<Customer> {
 		return customerList;
 	}
 
-	@Override
-	public void create(Connection conn, Customer t) throws CompanyException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void update(Connection conn, Customer t, Object[] params) {
-		// TODO Auto-generated method stub
-
-	}
-	
 	public void update(Connection conn, Customer customer) throws SQLException {
-	    String sql = "UPDATE customers SET name = ?, address = ?, website = ?, credit_limit = ? WHERE customer_id = ?";
-	    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-	        stmt.setString(1, customer.getName());
-	        stmt.setString(2, customer.getAddres());
-	        stmt.setString(3, customer.getWebsite());
-	        stmt.setDouble(4, customer.getCreditLimit());
-	        stmt.setInt(5, customer.getCustomerId());
+		String sql = "UPDATE customers SET name = ?, address = ?, website = ?, credit_limit = ? WHERE customer_id = ?";
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setString(1, customer.getName());
+			stmt.setString(2, customer.getAddres());
+			stmt.setString(3, customer.getWebsite());
+			stmt.setDouble(4, customer.getCreditLimit());
+			stmt.setInt(5, customer.getCustomerId());
 
-	        stmt.executeUpdate();
-	    }
-	}
-
-
-	@Override
-	public void delete(Connection conn, Customer t) {
-		// TODO Auto-generated method stub
-
+			stmt.executeUpdate();
+		}
 	}
 
 }

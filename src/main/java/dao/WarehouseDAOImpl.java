@@ -9,48 +9,22 @@ import Exceptions.CompanyException;
 import Exceptions.WarehouseDataException;
 import tablas.Warehouse;
 
-public class WarehouseDAOImpl implements DAO<Warehouse>{
+public class WarehouseDAOImpl {
 
-	@Override
-	public List<Warehouse> getAll(Connection conn) throws CompanyException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Warehouse get(Connection conn, int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void create(Connection conn, Warehouse warehouse) throws CompanyException {
 		String sqlQuery = "INSERT INTO warehouses (warehouse_name, location_id) VALUES (?,?)";
-		
-		try (PreparedStatement pstmt = conn.prepareStatement(sqlQuery))
-		{
+
+		try (PreparedStatement pstmt = conn.prepareStatement(sqlQuery)) {
 			pstmt.setString(1, warehouse.getWarehouseName());
 			pstmt.setInt(2, warehouse.getLocationId());
-			
+
 			pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new WarehouseDataException();
 		}
-		
-	}
 
-	@Override
-	public void update(Connection conn, Warehouse t, Object[] params) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(Connection conn, Warehouse t) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
