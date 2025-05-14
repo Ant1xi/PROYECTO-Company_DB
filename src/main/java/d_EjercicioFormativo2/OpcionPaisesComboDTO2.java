@@ -1,15 +1,15 @@
-package dto;
+package d_EjercicioFormativo2;
 
-public class OpcionComboDTO {
-    private int id;
+public class OpcionPaisesComboDTO2 {
+    private String id;
     private String nombre;
 
-    public OpcionComboDTO(int id, String nombre) {
+    public OpcionPaisesComboDTO2(String id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -22,4 +22,3 @@ public class OpcionComboDTO {
         return nombre;  // Esto es lo que se verá en el JComboBox
     }
 }
-

@@ -1,4 +1,4 @@
-package dto;
+package d_EjercicioFormativo3;
 
 public class ClienteModificarDTO {
 

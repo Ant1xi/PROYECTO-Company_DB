@@ -2,7 +2,6 @@ package miVista;
 
 import dao.ContactDAOImpl;
 import dao.CustomerDAOImpl;
-import dto.ClienteModificarDTO;
 import tablas.Contact;
 import tablas.Customer;
 
@@ -11,6 +10,8 @@ import java.awt.*;
 import java.sql.Connection;
 
 import com.daw.Company_DB_App.DataBaseConector;
+
+import d_EjercicioFormativo3.ClienteModificarDTO;
 
 public class FormularioModificarClienteVista extends JFrame {
 

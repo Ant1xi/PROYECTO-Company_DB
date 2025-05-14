@@ -1,4 +1,4 @@
-package miVista;
+package d_EjercicioFormativo1;
 
 import java.awt.GridLayout;
 import java.sql.Connection;
@@ -14,11 +14,8 @@ import javax.swing.JTextField;
 
 import com.daw.Company_DB_App.DataBaseConector;
 
-import Controladores.EmployeeControllerEjercicio1;
 import Exceptions.EmployeeDataException;
 import Exceptions.IncorrectDataException;
-import dao.EmployeeDAOImpl;
-import dto.OpcionComboDTO;
 import oracle.sql.OpaqueDescriptor;
 import tablas.Employee;
 

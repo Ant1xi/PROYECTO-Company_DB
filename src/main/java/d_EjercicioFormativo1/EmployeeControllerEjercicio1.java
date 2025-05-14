@@ -1,4 +1,4 @@
-package Controladores;
+package d_EjercicioFormativo1;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,9 +11,6 @@ import com.daw.Company_DB_App.DataBaseConector;
 import Exceptions.CompanyException;
 import Exceptions.EmployeeDataException;
 import Exceptions.IncorrectDataException;
-import dao.EmployeeDAOImpl;
-import dto.OpcionComboDTO;
-import miVista.AltaEmpleadoVista;
 import tablas.Employee;
 
 public class EmployeeControllerEjercicio1 {

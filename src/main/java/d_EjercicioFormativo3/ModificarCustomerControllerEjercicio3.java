@@ -1,4 +1,4 @@
-package Controladores;
+package d_EjercicioFormativo3;
 
 import java.sql.Connection;
 import java.util.List;
@@ -10,7 +10,6 @@ import com.daw.Company_DB_App.DataBaseConector;
 
 import dao.ContactDAOImpl;
 import dao.CustomerDAOImpl;
-import dto.ClienteModificarDTO;
 import miVista.FormularioModificarClienteVista;
 import miVista.TablaClienteVista;
 import tablas.Contact;

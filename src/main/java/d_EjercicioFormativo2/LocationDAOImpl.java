@@ -1,4 +1,4 @@
-package dao;
+package d_EjercicioFormativo2;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

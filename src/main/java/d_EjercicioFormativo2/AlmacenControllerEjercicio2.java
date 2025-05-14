@@ -1,4 +1,4 @@
-package Controladores;
+package d_EjercicioFormativo2;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,11 +8,8 @@ import java.util.List;
 import com.daw.Company_DB_App.DataBaseConector;
 
 import Exceptions.CompanyException;
+import d_EjercicioFormativo1.OpcionComboDTO;
 import dao.CountryDAOImpl;
-import dao.LocationDAOImpl;
-import dao.RegionDAOImpl;
-import dto.OpcionComboDTO;
-import dto.OpcionPaisesComboDTO2;
 import tablas.Country;
 import tablas.Location;
 import tablas.Region;
@@ -20,7 +17,7 @@ import tablas.Region;
 public class AlmacenControllerEjercicio2 {
 
 	public void cargaVistaAltaAlmacen() {
-		new miVista.AltaAlmacenVista(); // Esto abre la ventana
+		new d_EjercicioFormativo2.AltaAlmacenVista(); // Esto abre la ventana
 	}
 	
 	// Método para obtener todas las regiones convertidas en OpcionComboDTO
@@ -32,7 +29,7 @@ public class AlmacenControllerEjercicio2 {
 			RegionDAOImpl regionDAO = new RegionDAOImpl();
 			List<Region> listaRegiones = regionDAO.getAll(conn);
 
-			listaDTO.add(new OpcionComboDTO(0,""));
+			listaDTO.add(new OpcionComboDTO(0,"")); //Para que el JComboBox salga precargado con "" en vez de con una region
 			// Convertimos cada Region en un OpcionComboDTO
 			for (Region region : listaRegiones) {
 				listaDTO.add(new OpcionComboDTO(region.getRegionId(), region.getRegionName()));
@@ -52,6 +49,8 @@ public class AlmacenControllerEjercicio2 {
 			CountryDAOImpl countryDAO = new CountryDAOImpl();
 			List<Country> listaPaises = countryDAO.getCountriesByRegion(conn, regionId);
 
+			listaDTO.add(new OpcionPaisesComboDTO2("",""));
+			
 			for (Country country : listaPaises) {
 				listaDTO.add(new OpcionPaisesComboDTO2(country.getCountryId(), country.getCountryName()));
 			}
@@ -68,6 +67,7 @@ public class AlmacenControllerEjercicio2 {
 		try (Connection conn = DataBaseConector.getConnection()) {
 			LocationDAOImpl locationDAO = new LocationDAOImpl();
 			List<Location> listaLocations = locationDAO.getLocationsByCountry(conn, countryId);
+			listaDTO.add(new OpcionComboDTO(0,""));
 
 			for (Location location : listaLocations) {
 				// Puedes usar la dirección o la ciudad como "nombre" a mostrar

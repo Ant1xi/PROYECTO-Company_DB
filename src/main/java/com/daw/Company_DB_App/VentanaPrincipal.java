@@ -1,12 +1,12 @@
-package miVista;
+package com.daw.Company_DB_App;
 
 import javax.swing.*;
 
-import Controladores.AlmacenControllerEjercicio2;
-import Controladores.BuscarClienteYDetallesPedidoControllerEjercicio4;
-import Controladores.EmployeeControllerEjercicio1;
-import Controladores.ModificarCustomerControllerEjercicio3;
 import Exceptions.CompanyException;
+import d_EjercicioFormativo1.EmployeeControllerEjercicio1;
+import d_EjercicioFormativo2.AlmacenControllerEjercicio2;
+import d_EjercicioFormativo3.ModificarCustomerControllerEjercicio3;
+import d_EjercicioFormativo4.BuscarClienteYDetallesPedidoControllerEjercicio4;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +20,6 @@ public class VentanaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new GridLayout(6, 2, 10, 10)); // 6 filas, 2 columnas, separación
 
-				
 		// Botón para abrir la ventana de Alta de Empleado
 		JButton btnAltaEmpleado = new JButton("Alta de Empleado");
 		btnAltaEmpleado.addActionListener(new ActionListener() {
@@ -53,10 +52,10 @@ public class VentanaPrincipal extends JFrame {
 				}
 			}
 		});
-		
+
 		JButton btnModificarCliente = new JButton("Modificar datos de un cliente");
 		btnModificarCliente.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -64,10 +63,10 @@ public class VentanaPrincipal extends JFrame {
 				c3.cargarVistaModificarCustomers();
 			}
 		});
-		
+
 		JButton btnBuscarPedidosCliente = new JButton("Buscar pedidos de un cliente y vista detalle del pedido");
 		btnBuscarPedidosCliente.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -75,24 +74,24 @@ public class VentanaPrincipal extends JFrame {
 				c4.cargarBuscarPedidosClienteVista();
 			}
 		});
-		
+
 		JButton btnEliminarEmpleado = new JButton("Eliminar empleado");
 		btnEliminarEmpleado.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 		JButton btnTraspasoYCierreAlmacen = new JButton("Traspaso y cierre de un almacén");
 		btnTraspasoYCierreAlmacen.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 

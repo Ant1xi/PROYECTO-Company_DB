@@ -4,6 +4,9 @@ import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import tablas.Order;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyListener;
@@ -47,12 +50,16 @@ public class BuscarPedidosClienteVista extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(tablaOrders);
 
 		// Habilitar botón detalle si hay una fila seleccionada
-		tablaOrders.getSelectionModel().addListSelectionListener(e -> {
-			if (!e.getValueIsAdjusting()) {
-				btnDetallePedido.setEnabled(tablaOrders.getSelectedRow() != -1);
+		tablaOrders.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if (!e.getValueIsAdjusting()) {
+					btnDetallePedido.setEnabled(tablaOrders.getSelectedRow() != -1);
+				}
+
 			}
 		});
-
 
 		// Añadir los componentes al layout
 		add(lblCustomerId);
@@ -72,6 +79,60 @@ public class BuscarPedidosClienteVista extends JFrame {
 
 		add(new JLabel()); // espacio vacío
 		add(btnDetallePedido);
+
+		txtCustomerId.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String Id = txtCustomerId.getText().trim();
+
+				if (!Id.isEmpty()) {
+					btnBuscarCliente.setEnabled(true);
+				} else {
+					btnBuscarCliente.setEnabled(false);
+				}
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		txtCustomerName.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				String Nombre = txtCustomerName.getText().trim();
+
+				if (!Nombre.isEmpty()) {
+					btnBuscarCliente.setEnabled(true);
+				} else {
+					btnBuscarCliente.setEnabled(false);
+				}
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 
 		boolean camposLlenos = isAlgoEscrito();
 
