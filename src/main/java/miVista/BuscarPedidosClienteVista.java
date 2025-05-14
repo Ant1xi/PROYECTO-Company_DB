@@ -53,24 +53,6 @@ public class BuscarPedidosClienteVista extends JFrame {
 			}
 		});
 
-		// Activar botón buscar si hay texto, tambien encontre otra manera que era el
-		// DocumentListener, pero era algo más complejo. La diferencia entre ellos es
-		// que el keyListener es menos fiable ya que solo detecta la entrada por teclso,
-		// es decir si copias y pegas no activará el boton. Y el documentListener se
-		// encarga de ver si hay algun tipo de texto dentro o si el JTextFiel esta vacio
-		// alcompleto
-		
-		KeyListener listener = new KeyAdapter() {
-			public void keyReleased(KeyEvent e) {
-				boolean hayTexto = !txtCustomerId.getText().trim().isEmpty()
-						|| !txtCustomerName.getText().trim().isEmpty();
-
-				btnBuscarCliente.setEnabled(hayTexto);
-			}
-		};
-
-		txtCustomerId.addKeyListener(listener);
-		txtCustomerName.addKeyListener(listener);
 
 		// Añadir los componentes al layout
 		add(lblCustomerId);
@@ -90,6 +72,14 @@ public class BuscarPedidosClienteVista extends JFrame {
 
 		add(new JLabel()); // espacio vacío
 		add(btnDetallePedido);
+
+		boolean camposLlenos = isAlgoEscrito();
+
+		if (camposLlenos == true) {
+			btnBuscarCliente.setEnabled(true);
+		} else {
+			btnBuscarCliente.setEnabled(false);
+		}
 	}
 
 	// Getters
@@ -111,5 +101,22 @@ public class BuscarPedidosClienteVista extends JFrame {
 
 	public JTable getTablaOrders() {
 		return tablaOrders;
+	}
+
+	public boolean isAlgoEscrito() {
+
+		boolean isAlgoEscrito;
+
+		boolean isId = !txtCustomerId.getText().trim().isEmpty();
+		boolean isNombre = !txtCustomerName.getText().trim().isEmpty();
+
+		if (isId == true || isNombre == true) {
+			isAlgoEscrito = true;
+		} else {
+			isAlgoEscrito = false;
+		}
+
+		return isAlgoEscrito;
+
 	}
 }

@@ -18,8 +18,9 @@ public class VentanaPrincipal extends JFrame {
 		setTitle("Menú Principal");
 		setSize(400, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new GridLayout(5, 2, 10, 10)); // 5 filas, 2 columnas, separación
+		setLayout(new GridLayout(6, 2, 10, 10)); // 6 filas, 2 columnas, separación
 
+				
 		// Botón para abrir la ventana de Alta de Empleado
 		JButton btnAltaEmpleado = new JButton("Alta de Empleado");
 		btnAltaEmpleado.addActionListener(new ActionListener() {
@@ -74,12 +75,34 @@ public class VentanaPrincipal extends JFrame {
 				c4.cargarBuscarPedidosClienteVista();
 			}
 		});
+		
+		JButton btnEliminarEmpleado = new JButton("Eliminar empleado");
+		btnEliminarEmpleado.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		JButton btnTraspasoYCierreAlmacen = new JButton("Traspaso y cierre de un almacén");
+		btnTraspasoYCierreAlmacen.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 		// Agregar los botones al menú principal
 		add(btnAltaEmpleado);
 		add(btnAltaAlmacen);
 		add(btnModificarCliente);
 		add(btnBuscarPedidosCliente);
+		add(btnEliminarEmpleado);
+		add(btnTraspasoYCierreAlmacen);
 
 		// Mostrar la ventana
 		setVisible(true);

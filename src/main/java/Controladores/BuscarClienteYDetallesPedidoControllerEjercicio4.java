@@ -21,6 +21,7 @@ public class BuscarClienteYDetallesPedidoControllerEjercicio4 {
 
 	public void cargarBuscarPedidosClienteVista() {
 
+		
 		try (Connection conn = DataBaseConector.getConnection()) {
 
 			// Al abrir la ventana, la tabla empieza vacía (sin pedidos aún)

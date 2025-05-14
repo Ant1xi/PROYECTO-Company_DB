@@ -32,6 +32,7 @@ public class AlmacenControllerEjercicio2 {
 			RegionDAOImpl regionDAO = new RegionDAOImpl();
 			List<Region> listaRegiones = regionDAO.getAll(conn);
 
+			listaDTO.add(new OpcionComboDTO(0,""));
 			// Convertimos cada Region en un OpcionComboDTO
 			for (Region region : listaRegiones) {
 				listaDTO.add(new OpcionComboDTO(region.getRegionId(), region.getRegionName()));
