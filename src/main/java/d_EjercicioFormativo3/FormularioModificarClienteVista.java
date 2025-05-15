@@ -1,4 +1,4 @@
-package miVista;
+package d_EjercicioFormativo3;
 
 import dao.ContactDAOImpl;
 import dao.CustomerDAOImpl;
@@ -7,11 +7,11 @@ import tablas.Customer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 
 import com.daw.Company_DB_App.DataBaseConector;
-
-import d_EjercicioFormativo3.ClienteModificarDTO;
 
 public class FormularioModificarClienteVista extends JFrame {
 
@@ -25,9 +25,9 @@ public class FormularioModificarClienteVista extends JFrame {
 		setSize(500, 400);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
-		setLayout(new GridLayout(9, 2, 10, 10)); // 9 filas (8 campos + botón), 2 columnas
+		setLayout(new GridLayout(9, 2, 10, 10)); // 9 filas, 2 columnas y la separacion
 
-		// CAMPOS DEL CLIENTE (tabla CUSTOMERS)
+		// Campos del cliente tabla customers
 		add(new JLabel("Nombre de la empresa:"));
 		txtNombre = new JTextField(dto.getCustomerName());
 		add(txtNombre);
@@ -44,7 +44,7 @@ public class FormularioModificarClienteVista extends JFrame {
 		txtCredito = new JTextField(dto.getCreditLimit());
 		add(txtCredito);
 
-		// ===== CAMPOS DEL CONTACTO (tabla CONTACTS) =====
+		// Campos del contacto de la tabla contacts
 		add(new JLabel("Nombre de contacto:"));
 		txtNombreContacto = new JTextField(dto.getFirstName());
 		add(txtNombreContacto);
@@ -67,38 +67,46 @@ public class FormularioModificarClienteVista extends JFrame {
 		add(btnGuardar);
 
 		// Acción del botón
-		btnGuardar.addActionListener(e -> {
-			try {
-				// Validamos que los campos no estén vacíos con el método "camposVacios()"
-				if (camposVacios()) {
-					JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.");
-					return;
-				}
+		btnGuardar.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        try {
+		        	
+		        	//Comprobamos si los campos estan vacios con el método creado fuera del constructor
+		            if (camposVacios()) {
+		                JOptionPane.showMessageDialog(FormularioModificarClienteVista.this,
+		                        "Por favor, completa todos los campos.");
+		                return;
+		            }
 
-				// Creamos los objetos con los nuevos datos
-				Customer customer = new Customer(dto.getCustomerId(), txtNombre.getText(), txtDireccion.getText(),
-						txtWeb.getText(), Double.parseDouble(txtCredito.getText()));
+		            //Crear 
+		            Customer customer = new Customer(dto.getCustomerId(), txtNombre.getText(),
+		                    txtDireccion.getText(), txtWeb.getText(), Double.parseDouble(txtCredito.getText()));
 
-				Contact contact = new Contact(dto.getContactId(), txtNombreContacto.getText(),
-						txtApellidoContacto.getText(), txtEmail.getText(), txtTelefono.getText(), dto.getCustomerId());
+		            Contact contact = new Contact(dto.getContactId(), txtNombreContacto.getText(),
+		                    txtApellidoContacto.getText(), txtEmail.getText(), txtTelefono.getText(),
+		                    dto.getCustomerId());
 
-				// Conexión y updates
-				try (Connection conn = DataBaseConector.getConnection()) {
-					CustomerDAOImpl customerDAO = new CustomerDAOImpl();
-					ContactDAOImpl contactDAO = new ContactDAOImpl();
+		            try (Connection conn = DataBaseConector.getConnection()) {
+		                CustomerDAOImpl customerDAO = new CustomerDAOImpl();
+		                ContactDAOImpl contactDAO = new ContactDAOImpl();
 
-					customerDAO.update(conn, customer);
-					contactDAO.update(conn, contact);
+		                customerDAO.update(conn, customer);
+		                contactDAO.update(conn, contact);
 
-					JOptionPane.showMessageDialog(this, "Datos actualizados correctamente.");
-					dispose(); // cierro la ventana después de guardar
-				}
+		                JOptionPane.showMessageDialog(FormularioModificarClienteVista.this,
+		                        "Datos actualizados correctamente.");
+		                dispose();
+		            }
 
-			} catch (Exception ex) {
-				ex.printStackTrace();
-				JOptionPane.showMessageDialog(this, "Ocurrió un error al actualizar los datos.");
-			}
+		        } catch (Exception ex) {
+		            ex.printStackTrace();
+		            JOptionPane.showMessageDialog(FormularioModificarClienteVista.this,
+		                    "Ocurrió un error al actualizar los datos.");
+		        }
+		    }
 		});
+
 
 		setVisible(true);
 	}

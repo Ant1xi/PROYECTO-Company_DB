@@ -1,36 +1,31 @@
-package miVista;
+package d_EjercicioFormativo3;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-import tablas.Order;
+import tablas.Customer;
 
+public class CustomerTableModel implements TableModel {
 
+	private List<Customer> customerList;
 
-
-
-public class OrderTableModel implements TableModel {
-
-	private List<Order> orderList;
-
-	public OrderTableModel(List<Order> orderList) {
+	public CustomerTableModel(List<Customer> customerList) {
 		super();
-		this.orderList = orderList;
+		this.customerList = customerList;
 	}
 
 	@Override
 	public int getRowCount() {
-		return orderList.size();
+		return customerList.size();
 
 	}
 
 	@Override
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
-		return 5;
+		return 4;
 	}
 
 	@Override
@@ -38,19 +33,16 @@ public class OrderTableModel implements TableModel {
 
 		switch (columnIndex) {
 		case 0: {
-			return "orderId";
+			return "Nombre";
 		}
 		case 1: {
-			return "customerId";
+			return "Dirección";
 		}
 		case 2: {
-			return "status";
+			return "Pagina Web";
 		}
 		case 3: {
-			return "salesmanId";
-		}
-		case 4: {
-			return "orderDate";
+			return "Limete de crédito";
 		}
 		default:
 			return null;
@@ -62,19 +54,16 @@ public class OrderTableModel implements TableModel {
 		
 		switch (columnIndex) {
 		case 0: {
-			return Integer.class;
+			return String.class;
 		}
 		case 1: {
-			return Integer.class;
+			return String.class;
 		}
 		case 2: {
 			return String.class;
 		}
 		case 3: {
-			return Integer.class;
-		}
-		case 4: {
-			return Date.class;
+			return Double.class;
 		}
 		default:
 			return null;
@@ -90,24 +79,27 @@ public class OrderTableModel implements TableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-	    Order odr = orderList.get(rowIndex);  // ← ¡Este sí es el correcto!
-
-	    switch (columnIndex) {
-	        case 0:
-	            return odr.getOrderId();
-	        case 1:
-	            return odr.getCustomerId();
-	        case 2:
-	            return odr.getStatus();
-	        case 3:
-	            return odr.getSalesmanId();
-	        case 4:
-	            return odr.getOrderDate();
-	        default:
-	            return null;
-	    }
+		
+		Customer c = customerList.get(rowIndex);
+		
+		switch (columnIndex) {
+		case 0: {
+			return c.getName();
+		}
+		case 1: {
+			return c.getAddres();
+		}
+		case 2: {
+			return c.getWebsite();
+		}
+		case 3: {
+			return c.getCreditLimit();
+		}
+		default:
+			return null;
+		}
+		
 	}
-
 
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
@@ -128,4 +120,3 @@ public class OrderTableModel implements TableModel {
 	}
 
 }
-

@@ -1,6 +1,8 @@
 package d_EjercicioFormativo1;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -89,17 +91,22 @@ public class AltaEmpleadoVista extends JFrame {
 		cargarComboBoxManagers();
 
 		// Añadir acción al botón "Guardar"
-		btnGuardar.addActionListener(e -> {
-			try {
+		btnGuardar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				try {
-					guardarEmpleado();
-				} catch (EmployeeDataException e1) {
+					try {
+						guardarEmpleado();
+					} catch (EmployeeDataException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (IncorrectDataException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			} catch (IncorrectDataException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+
 			}
 		});
 
@@ -150,7 +157,7 @@ public class AltaEmpleadoVista extends JFrame {
 																										// se encarga de
 																										// validación y
 																										// DAO
-			//Para que se muestre el Joption pane en esta ventana usamos: this
+			// Para que se muestre el Joption pane en esta ventana usamos: this
 			JOptionPane.showMessageDialog(this, "Empleado guardado correctamente.", "Éxito",
 					JOptionPane.INFORMATION_MESSAGE);
 			limpiarCampos();

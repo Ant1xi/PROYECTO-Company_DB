@@ -1,4 +1,4 @@
-package d_EjercicioFormativo1;
+package dao;
 
 import java.sql.*;
 import java.util.*;

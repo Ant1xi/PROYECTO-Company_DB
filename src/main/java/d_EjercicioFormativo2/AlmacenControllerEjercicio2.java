@@ -10,6 +10,8 @@ import com.daw.Company_DB_App.DataBaseConector;
 import Exceptions.CompanyException;
 import d_EjercicioFormativo1.OpcionComboDTO;
 import dao.CountryDAOImpl;
+import dao.LocationDAOImpl;
+import dao.RegionDAOImpl;
 import tablas.Country;
 import tablas.Location;
 import tablas.Region;

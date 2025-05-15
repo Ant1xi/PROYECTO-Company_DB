@@ -12,7 +12,6 @@ import com.daw.Company_DB_App.DataBaseConector;
 
 import Exceptions.CompanyException;
 import Exceptions.WarehouseDataException;
-import d_EjercicioFormativo2.WarehouseDAOImpl;
 import tablas.Warehouse;
 
 public class WarehouseDAOImplTest {

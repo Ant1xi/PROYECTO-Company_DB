@@ -1,4 +1,4 @@
-package d_EjercicioFormativo2;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Exceptions.CompanyException;
-import d_EjercicioFormativo1.OpcionComboDTO;
 import tablas.Region;
 
 public class RegionDAOImpl {

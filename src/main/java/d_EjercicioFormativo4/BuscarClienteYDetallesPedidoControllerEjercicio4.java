@@ -12,8 +12,6 @@ import com.daw.Company_DB_App.DataBaseConector;
 
 import dao.CustomerDAOImpl;
 import dao.OrderDAOImpl;
-import miVista.BuscarPedidosClienteVista;
-import miVista.OrderTableModel;
 import tablas.Customer;
 import tablas.Order;
 

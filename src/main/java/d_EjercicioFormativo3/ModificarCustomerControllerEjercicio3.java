@@ -10,8 +10,6 @@ import com.daw.Company_DB_App.DataBaseConector;
 
 import dao.ContactDAOImpl;
 import dao.CustomerDAOImpl;
-import miVista.FormularioModificarClienteVista;
-import miVista.TablaClienteVista;
 import tablas.Contact;
 import tablas.Customer;
 

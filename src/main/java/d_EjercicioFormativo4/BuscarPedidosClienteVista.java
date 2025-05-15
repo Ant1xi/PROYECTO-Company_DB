@@ -1,4 +1,4 @@
-package miVista;
+package d_EjercicioFormativo4;
 
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
@@ -8,7 +8,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import tablas.Order;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyListener;
 
 public class BuscarPedidosClienteVista extends JFrame {

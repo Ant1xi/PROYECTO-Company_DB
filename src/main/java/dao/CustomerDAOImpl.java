@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Exceptions.CompanyException;
-import d_EjercicioFormativo3.ClienteModificarDTO;
 import tablas.Customer;
 
 public class CustomerDAOImpl {

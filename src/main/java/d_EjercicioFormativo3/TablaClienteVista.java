@@ -1,10 +1,11 @@
-package miVista;
+package d_EjercicioFormativo3;
 
 
 import java.awt.BorderLayout;
 import java.util.List;
 
 import javax.swing.*;
+
 import tablas.Customer;
 
 public class TablaClienteVista extends JFrame {
