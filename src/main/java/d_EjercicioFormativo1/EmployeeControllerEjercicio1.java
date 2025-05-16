@@ -37,7 +37,7 @@ public class EmployeeControllerEjercicio1 {
 	}
 
 	public void guardarEmpleado(String firstName, String lastName, String email, String phone, Date fecha,
-			Integer managerId, String jobTitle) throws IncorrectDataException, EmployeeDataException {
+			Integer managerId, String jobTitle) throws EmployeeDataException {
 		// Una vez validado todo y obtenido la id, ya se puede crear al nuevo empleado
 		Employee empleado = new Employee(firstName, lastName, email, phone, null, managerId, jobTitle);
 

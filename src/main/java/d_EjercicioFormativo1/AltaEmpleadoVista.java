@@ -95,13 +95,12 @@ public class AltaEmpleadoVista extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				try {
-					try {
-						guardarEmpleado();
-					} catch (EmployeeDataException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					guardarEmpleado();
+				} catch (EmployeeDataException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				} catch (IncorrectDataException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -153,22 +152,15 @@ public class AltaEmpleadoVista extends JFrame {
 		// Tenemos que guardar llamando al controlador y no al DAO
 		try {
 			EmployeeControllerEjercicio1 controller = new EmployeeControllerEjercicio1();
-			controller.guardarEmpleado(firstName, lastName, email, phone, null, managerId, jobTitle); // El controlador
-																										// se encarga de
-																										// validación y
-																										// DAO
-			// Para que se muestre el Joption pane en esta ventana usamos: this
+			// El controlador se encarga de la validacion y el DAO
+			controller.guardarEmpleado(firstName, lastName, email, phone, null, managerId, jobTitle);
+			// Para que se muestre el Joption pane en esta ventana usamos (this)
 			JOptionPane.showMessageDialog(this, "Empleado guardado correctamente.", "Éxito",
 					JOptionPane.INFORMATION_MESSAGE);
 			limpiarCampos();
-		} catch (IncorrectDataException ex) {
-			JOptionPane.showMessageDialog(this, "Error de validación: " + ex.getMessage(), "Datos inválidos",
+		} catch (EmployeeDataException e) {
+			JOptionPane.showMessageDialog(this, "Error de validación: " + e.getMessage(), "Datos inválidos",
 					JOptionPane.WARNING_MESSAGE);
-			throw ex;
-		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(this, "Error inesperado: " + ex.getMessage(), "Error",
-					JOptionPane.ERROR_MESSAGE);
-			ex.printStackTrace();
 		}
 	}
 

@@ -70,6 +70,7 @@ public class AltaAlmacenVista extends JFrame {
 		 * actionPerformed(), donde ya puedo programar lo que quiero que pase cuando se
 		 * hace clic.
 		 */
+	
 
 		cbRegiones.addActionListener(new ActionListener() {
 			@Override
@@ -77,6 +78,8 @@ public class AltaAlmacenVista extends JFrame {
 				cargarPaises();
 			}
 		});
+		
+		cbRegiones.addActionListener(e -> cargarPaises());
 
 		cbPaises.addActionListener(new ActionListener() {
 			@Override
