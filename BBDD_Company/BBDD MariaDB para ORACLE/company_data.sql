@@ -1,3 +1,6 @@
+
+SET DEFINE OFF;
+
 -- REGIONS
 
 Insert into REGIONS (REGION_ID,REGION_NAME) values (1,'Europe');
@@ -506,8 +509,7 @@ Insert into PRODUCTS (PRODUCT_ID,PRODUCT_NAME,DESCRIPTION,STANDARD_COST,LIST_PRI
 
 
 -- CUSTOMERS
-
-SET DEFINE OFF;
+ALTER TABLE orders DISABLE CONSTRAINT fk_orders_customers;
 
 Insert into CUSTOMERS (CUSTOMER_ID,NAME,ADDRESS,CREDIT_LIMIT,WEBSITE) values (177,'United Continental Holdings','2904 S Salina St, Syracuse, NY',5000,'http://www.unitedcontinentalholdings.com');
 Insert into CUSTOMERS (CUSTOMER_ID,NAME,ADDRESS,CREDIT_LIMIT,WEBSITE) values (180,'INTL FCStone','5344 Haverford Ave, Philadelphia, PA',5000,'http://www.intlfcstone.com');
@@ -829,7 +831,7 @@ Insert into CUSTOMERS (CUSTOMER_ID,NAME,ADDRESS,CREDIT_LIMIT,WEBSITE) values (16
 Insert into CUSTOMERS (CUSTOMER_ID,NAME,ADDRESS,CREDIT_LIMIT,WEBSITE) values (170,'Goldman Sachs Group','23985 Bedford Rd N, Battle Creek, MI',3700,'http://www.gs.com');
 Insert into CUSTOMERS (CUSTOMER_ID,NAME,ADDRESS,CREDIT_LIMIT,WEBSITE) values (174,'Oracle','701 Seneca St, Buffalo, NY',5000,'http://www.oracle.com');
 
-SET DEFINE ON;
+ALTER TABLE orders DISABLE CONSTRAINT fk_orders_customers;
 
 -- CONTACTS
 
@@ -3048,3 +3050,4 @@ Insert into INVENTORIES (PRODUCT_ID,WAREHOUSE_ID,QUANTITY) values (205,8,142);
 Insert into INVENTORIES (PRODUCT_ID,WAREHOUSE_ID,QUANTITY) values (207,8,121);
 
 
+SET DEFINE ON;
